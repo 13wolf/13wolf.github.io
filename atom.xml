@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://13wolf.github.io</id>
     <title>13wolf</title>
-    <updated>2020-12-07T09:37:05.916Z</updated>
+    <updated>2020-12-22T08:20:19.981Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://13wolf.github.io"/>
     <link rel="self" href="https://13wolf.github.io/atom.xml"/>
@@ -10,6 +10,18 @@
     <logo>https://13wolf.github.io/images/avatar.png</logo>
     <icon>https://13wolf.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 13wolf</rights>
+    <entry>
+        <title type="html"><![CDATA[Word 2016设置每页50行]]></title>
+        <id>https://13wolf.github.io/post/word-2016-she-zhi-mei-ye-50-hang/</id>
+        <link href="https://13wolf.github.io/post/word-2016-she-zhi-mei-ye-50-hang/">
+        </link>
+        <updated>2020-12-22T08:11:55.000Z</updated>
+        <content type="html"><![CDATA[<p>软件著作权登记要求贴源代码，并且A4每页的代码行数要50。但是一般Word的显示最大只有44行。<br>
+<img src="https://13wolf.github.io/post-images/1608625022456.png" alt="" loading="lazy"><br>
+<img src="https://13wolf.github.io/post-images/1608625110631.png" alt="" loading="lazy"><br>
+<img src="https://13wolf.github.io/post-images/1608625140217.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[OAuth2 in Spring Security]]></title>
         <id>https://13wolf.github.io/post/oauth2-in-spring-security/</id>
