@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://13wolf.github.io</id>
+    <title>13wolf</title>
+    <updated>2023-03-09T06:17:05.316Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://13wolf.github.io"/>
+    <link rel="self" href="https://13wolf.github.io/atom.xml"/>
+    <subtitle>Just Gibberish</subtitle>
+    <logo>https://13wolf.github.io/images/avatar.png</logo>
+    <icon>https://13wolf.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, 13wolf</rights>
+    <entry>
+        <title type="html"><![CDATA[Gitlab Commits Author filter ]]></title>
+        <id>https://13wolf.github.io/post/gitlab-commits-author-filter/</id>
+        <link href="https://13wolf.github.io/post/gitlab-commits-author-filter/">
+        </link>
+        <updated>2023-03-09T03:18:08.000Z</updated>
+        <content type="html"><![CDATA[<p>最近发现Gitlab在项目提交的作者过滤功能是通过git 提交的user.name进行的。如果不修改已经提交的代码作者，也可以在浏览器的地址栏将过滤的Url修改也可以。如下图：</p>
+<ul>
+<li>过滤失败的<br>
+<img src="https://13wolf.github.io/post-images/1678332220881.png" alt="过滤失败的" loading="lazy"></li>
+<li>过滤成功的<br>
+<img src="https://13wolf.github.io/post-images/1678332251592.png" alt="过滤成功的" loading="lazy"></li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[TypeORM：Property ‘id’ has no initializer and is not definitely assigned in the constructor]]></title>
+        <id>https://13wolf.github.io/post/typeorm-property-has-no-initializer-in-the-constructor/</id>
+        <link href="https://13wolf.github.io/post/typeorm-property-has-no-initializer-in-the-constructor/">
+        </link>
+        <updated>2023-02-24T07:15:49.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="问题">问题</h2>
+<p>When defining entities with TypeORM and TypeScript, you may encounter an annoying issue as follows:</p>
+<blockquote></blockquote>
+<p>Property 'id' has no initializer and is not definitely assigned in the constructor</p>
+<blockquote></blockquote>
+<p>The warnings are present not only in the id field but also in all other fields in my classes entity.</p>
+<h2 id="解决">解决</h2>
+<p>To solve the problem, we have to disable this feature. In your tsconfig.json file, find strictPropertyInitialization and set it to false:</p>
+<pre><code class="language-java">  &quot;strictPropertyInitialization&quot;: false,
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[MySQL中字符串字段值包含尾部空格查询问题解决办法]]></title>
+        <id>https://13wolf.github.io/post/mysql-tailing-space-in-search/</id>
+        <link href="https://13wolf.github.io/post/mysql-tailing-space-in-search/">
+        </link>
+        <updated>2022-02-08T06:57:40.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前提条件">前提条件</h2>
+<p>mysql提供了char和varchar两种字段类型，但若查询条件where中包含char或varchar的限制条件，那么会忽略char或varchar字段记录中末尾的空格字符。</p>
+<h2 id="原因">原因</h2>
+<p>mysql中字符串比较的时候使用的是PADSPACE校对规则，会忽略字符字段最后的空格。</p>
+<h2 id="解决方法">解决方法</h2>
+<p>例如查询table表中user（varchar类型）的字段：</p>
+<blockquote></blockquote>
+<ol>
+<li>使用mysql的LIKE查询关键字， SELECT * FROM TABLE WHERE user LIKE 'abc '；</li>
+<li>使用BINARY关键字， SELECT * FROM TABLE WHERE user = BINARY'abc '；</li>
+<li>使用LENGTH函数，SELECT * FROM TABLE WHERE user = ‘abc ’ AND LENGTH(user) = LENGTH('abc ')；</li>
+</ol>
+<blockquote></blockquote>
+<p>以上三种方法均可以将末尾有空格的varchar字段的记录查询出。</p>
+<h2 id="分析">分析</h2>
+<p>方法（1）中使用LIKE子句查询法，如果没有使用百分号 %进行模糊查询, LIKE 子句与等号 = 的效果是一样的；</p>
+<p>方法（2）中将查询的字段强转为二进制合适后进行查询匹配；</p>
+<p>方法（3）中在查询条件中增加varchar字段限制条件LENGTH长度的限制，因此对于末尾的空格可以查询出。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Word 2016 Set 50 Lines per Page]]></title>
+        <id>https://13wolf.github.io/post/Word-2016-Set-50-Lines-per-Page/</id>
+        <link href="https://13wolf.github.io/post/Word-2016-Set-50-Lines-per-Page/">
+        </link>
+        <updated>2022-01-10T09:25:46.000Z</updated>
+        <content type="html"><![CDATA[<p>软件著作权登记要求贴源代码，并且A4每页的代码行数要50。但是一般Word的显示最大只有44行。</p>
+<p><img src="https://13wolf.github.io/post-images/1608625022456.png" alt="pic1" loading="lazy"><br>
+<img src="https://13wolf.github.io/post-images/1608625110631.png" alt="pic2" loading="lazy"><br>
+<img src="https://13wolf.github.io/post-images/1608625140217.png" alt="pic3" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[spring data entity update will set createdby createddate to null]]></title>
+        <id>https://13wolf.github.io/post/spring-data-entity-update-will-set-createdby-createddate-to-null/</id>
+        <link href="https://13wolf.github.io/post/spring-data-entity-update-will-set-createdby-createddate-to-null/">
+        </link>
+        <updated>2022-01-10T09:22:49.000Z</updated>
+        <content type="html"><![CDATA[<p>当我们使用Spring Data并设置了Audit时，如果update数据时，Spring Data会将@Createdby @CreatedDate字段的数据设置为null，解决方法比较简单，直接在@Createdby @CreatedDate字段的@Column中设置updatable = false。</p>
+<pre><code class="language-java"> @Column( updatable = false)
+    @CreatedBy
+    private String createdBy;
+</code></pre>
+<p>第二种方法是在Entity类上使用@DynamicUpdate 注解，参见<a href="https://www.baeldung.com/spring-data-jpa-dynamicupdate">@DynamicUpdate with Spring Data JPA</a></p>
+<pre><code class="language-java">@Entity
+@DynamicUpdate
+public class Account {
+    // Existing data and methods
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Envers 在历史表里保留删除的记录]]></title>
+        <id>https://13wolf.github.io/post/envers-store-data-at-delete/</id>
+        <link href="https://13wolf.github.io/post/envers-store-data-at-delete/">
+        </link>
+        <updated>2022-01-10T09:15:49.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="问题">问题</h2>
+<p>在使用Hibernate 的 EnVers组件进行数据库的历史记录管理时，一般删除记录在历史表中是只保留被删除记录的主键的，有时我们需要删减记录时在历史表中保留完整的记录信息，例如：为老系统添加历史记录功能，这时历史表里可能没有被删除记录的原始版本，这时删除就会导致数据彻底消失。</p>
+<h2 id="解决">解决</h2>
+<p>我们可以在application.properties文件中添加</p>
+<blockquote>
+<p>spring.jpa.properties.org.hibernate.envers.store_data_at_delete=true</p>
+</blockquote>
+<p>这样在删除时就会在历史表中保留完整的被删除信息。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[OAuth2 in Spring Security]]></title>
+        <id>https://13wolf.github.io/post/oauth2-in-spring-security/</id>
+        <link href="https://13wolf.github.io/post/oauth2-in-spring-security/">
+        </link>
+        <updated>2020-12-07T05:06:39.000Z</updated>
+        <content type="html"><![CDATA[<p><a href="https://www.baeldung.com/spring-security-oauth-jwt">Using JWT with Spring Security OAuth</a></p>
+<p><a href="https://www.baeldung.com/rest-api-spring-oauth2-angular">Spring REST API + OAuth2 + Angular</a></p>
+<p><a href="https://www.baeldung.com/spring-security-oauth2-jws-jwk">WS + JWK in a Spring Security</a></p>
+<p><a href="https://www.baeldung.com/spring-webclient-oauth2#springsecurity-internals">Spring WebClient and OAuth2 Support</a></p>
+<p><a href="https://www.baeldung.com/spring-security-openid-connect">Spring Security and OpenID Connect</a></p>
+<p><a href="https://www.baeldung.com/spring-security-5-oauth2-login">Spring Security 5 – OAuth2 Login</a></p>
+]]></content>
+    </entry>
+</feed>

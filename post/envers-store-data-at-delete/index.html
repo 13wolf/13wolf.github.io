@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Envers 在历史表里保留删除的记录 | 13wolf</title>
+<link rel="shortcut icon" href="https://13wolf.github.io/favicon.ico?v=1678341648510">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://13wolf.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Envers 在历史表里保留删除的记录 | 13wolf - Atom Feed" href="https://13wolf.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="问题
+在使用Hibernate 的 EnVers组件进行数据库的历史记录管理时，一般删除记录在历史表中是只保留被删除记录的主键的，有时我们需要删减记录时在历史表中保留完整的记录信息，例如：为老系统添加历史记录功能，这时历史表里可能没有被删除..." />
+    <meta name="keywords" content="EnVers,delete" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://13wolf.github.io">
+  <img class="avatar" src="https://13wolf.github.io/images/avatar.png?v=1678341648510" alt="">
+  </a>
+  <h1 class="site-title">
+    13wolf
+  </h1>
+  <p class="site-description">
+    Just Gibberish
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Envers 在历史表里保留删除的记录
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-01-10
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://13wolf.github.io/tag/d8kwR7uFQb/" class="post-tag">
+                  # EnVers
+                </a>
+              
+                <a href="https://13wolf.github.io/tag/nqmQgMCmEI/" class="post-tag">
+                  # delete
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h2 id="问题">问题</h2>
+<p>在使用Hibernate 的 EnVers组件进行数据库的历史记录管理时，一般删除记录在历史表中是只保留被删除记录的主键的，有时我们需要删减记录时在历史表中保留完整的记录信息，例如：为老系统添加历史记录功能，这时历史表里可能没有被删除记录的原始版本，这时删除就会导致数据彻底消失。</p>
+<h2 id="解决">解决</h2>
+<p>我们可以在application.properties文件中添加</p>
+<blockquote>
+<p>spring.jpa.properties.org.hibernate.envers.store_data_at_delete=true</p>
+</blockquote>
+<p>这样在删除时就会在历史表中保留完整的被删除信息。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%97%AE%E9%A2%98">问题</a></li>
+<li><a href="#%E8%A7%A3%E5%86%B3">解决</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://13wolf.github.io/post/oauth2-in-spring-security/">
+              <h3 class="post-title">
+                OAuth2 in Spring Security
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://13wolf.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
